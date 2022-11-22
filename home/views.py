@@ -100,8 +100,8 @@ def giveFeedback(req, companyId, userId):
     context = giveFeedbackController(req, companyId, userId)
     return redirect('/profile/{userId}')
 
-def rateUser(req, userId, rating):
-    context = rateUserController(req, userId, rating)
+def rateUser(req, userId, rating, feedbackField):
+    context = rateUserController(req, userId, rating, feedbackField)
     return redirect('/profile/'+str(userId))
 
 def upskill(req):

@@ -97,8 +97,12 @@ def profileController(req, profileId):
         user = False
         profile = CompanyProfile.objects.get(id=profileId)
 
-    feedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user]).first()
-    context = {"status": True, "user": profile.user, "profile": profile, "feedback": feedback}
+    linkedInFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "LinkedIn").first()
+    resumeFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Resume").first()
+    courseraCertificatesFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Coursera Certificates").first()
+    profileFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Profile").first()
+    context = {"status": True, "user": profile.user, "profile": profile, "linkedInFeedback": linkedInFeedback, "resumeFeedback": resumeFeedback, "courseraCertificatesFeedback": courseraCertificatesFeedback, "profileFeedback": profileFeedback}
+    print(context)
     if user == False:
         context['website'] = requests.get(profile.website_link).text
 
@@ -251,16 +255,16 @@ def rejectController(req, jobPostingId, userId):
 
     sendNotification(jobposting, user, "Want this job?")
 
-def rateUserController(req, userId, rating):
+def rateUserController(req, userId, rating, feedbackField):
     from home.models import Feedback
     from django.contrib.auth.models import User
     from utils import sendReviewNotification
     user = User.objects.get(id = userId)
     company = req.user
 
-    old_feedback = Feedback.objects.all().filter(user__in = [userId]).filter(company__in = [req.user.id]).first()
+    old_feedback = Feedback.objects.all().filter(user__in = [userId]).filter(company__in = [req.user.id]).filter(ratingfield = feedbackField).first()
     if old_feedback == None:
-        feedback = Feedback(rating = rating, comments = "profile Feedback")
+        feedback = Feedback(rating = rating, ratingfield = feedbackField)
         feedback.save()
         feedback.user.add(user)
         feedback.company.add(company)

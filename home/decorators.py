@@ -21,9 +21,9 @@ def is_user_profile(function):
 def can_check_profile(function):
     from django.shortcuts import redirect
     def wrap(request, *args, **kwargs):
-        if request.user.userprofile.id == kwargs['profileId'] or request.user.companyprofile.isCompany:
-            return function(request, *args, **kwargs)
-        return redirect("/")
+        # if request.user.userprofile.id == kwargs['profileId'] or request.user.companyprofile.isCompany:
+        return function(request, *args, **kwargs)
+        # return redirect("/")
     wrap.__doc__ = function.__doc__
     wrap.__name__ = function.__name__
     return wrap

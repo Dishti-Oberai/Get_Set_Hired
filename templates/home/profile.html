@@ -20,64 +20,36 @@
       <div class="cardTitle">
         Average Rating: {{averageRating}}
       </div>
-      {% if feedback %}
-      Give New Rating(your rating - {{feedback.rating}})-:
-      {% else %}
-      Give New Rating-:
-      {% endif %}
       <div class="cardDetails vertical-center">
-        <form class="rating">
-          <label>
-            {% if feeback.rating == 1 %}
-            <input type="radio" name="stars" value="1" onclick = "window.location.href = '/rateUser/{{user.id}}/1';" selected/>
-            {% else %}
-            <input type="radio" name="stars" value="1" onclick = "window.location.href = '/rateUser/{{user.id}}/1';"/>
-            {% endif %}
-            <span class="icon">★</span>
-          </label>
-          <label>
-            {% if feeback.rating == 2 %}
-            <input type="radio" name="stars" value="2" onclick = "window.location.href = '/rateUser/{{user.id}}/2';" selected/>
-            {% else %}
-            <input type="radio" name="stars" value="2" onclick = "window.location.href = '/rateUser/{{user.id}}/2';"/>
-            {% endif %}
-            <span class="icon">★</span>
-            <span class="icon">★</span>
-          </label>
-          <label>
-            {% if feeback.rating == 3 %}
-            <input type="radio" name="stars" value="3" onclick = "window.location.href = '/rateUser/{{user.id}}/3';" selected/>
-            {% else %}
-            <input type="radio" name="stars" value="3" onclick = "window.location.href = '/rateUser/{{user.id}}/3';"/>
-            {% endif %}
-            <span class="icon">★</span>
-            <span class="icon">★</span>
-            <span class="icon">★</span>
-          </label>
-          <label>
-            {% if feeback.rating == 4 %}
-            <input type="radio" name="stars" value="4" onclick = "window.location.href = '/rateUser/{{user.id}}/4';" selected/>
-            {% else %}
-            <input type="radio" name="stars" value="4" onclick = "window.location.href = '/rateUser/{{user.id}}/4';"/>
-            {% endif %}
-            <span class="icon">★</span>
-            <span class="icon">★</span>
-            <span class="icon">★</span>
-            <span class="icon">★</span>
-          </label>
-          <label>
-            {% if feeback.rating == 5 %}
-            <input type="radio" name="stars" value="5" onclick = "window.location.href = '/rateUser/{{user.id}}/5';" selected/>
-            {% else %}
-            <input type="radio" name="stars" value="5" onclick = "window.location.href = '/rateUser/{{user.id}}/5';"/>
-            {% endif %}
-            <span class="icon">★</span>
-            <span class="icon">★</span>
-            <span class="icon">★</span>
-            <span class="icon">★</span>
-            <span class="icon">★</span>
-          </label>
-        </form>
+      Give New Rating-:
+        <select onclick="if (typeof(this.selectedIndex) != 'undefined') changeLoc(this.selectedIndex, 'Profile')">
+          <option value="">---</option>
+          {% if profileFeedback.rating == 1%}
+          <option value="1" selected>1</option>
+          {% else %}
+          <option value="1">1</option>
+          {% endif %}
+          {% if profileFeedback.rating == 2%}
+          <option value="2" selected>2</option>
+          {% else %}
+          <option value="2">2</option>
+          {% endif %}
+          {% if profileFeedback.rating == 3%}
+          <option value="3" selected>3</option>
+          {% else %}
+          <option value="3">3</option>
+          {% endif %}
+          {% if profileFeedback.rating == 4%}
+          <option value="4" selected>4</option>
+          {% else %}
+          <option value="4">4</option>
+          {% endif %}
+          {% if profileFeedback.rating == 5%}
+          <option value="5" selected>5</option>
+          {% else %}
+          <option value="5">5</option>
+          {% endif %}
+        </select>
       </div>
       <br>
       <div class="cardTitle">
@@ -107,13 +79,97 @@
         <div>
           <i class="fab fa-linkedin" style="margin-right: 5px;"></i>LinkedIn :
           {% if user.email == 'dishtioberai@gmail.com' %}
-          <a href="https://www.linkedin.com/in/dishti-oberai/" target="_blank">Link</a>
+          <a href="https://www.linkedin.com/in/dishti-oberai/" target="_blank">Link</a> 
+          <select onclick="if (typeof(this.selectedIndex) != 'undefined') changeLoc(this.selectedIndex, 'LinkedIn')">
+            <option value="">---</option>
+            {% if linkedInFeedback.rating == 1%}
+            <option value="1" selected>1</option>
+            {% else %}
+            <option value="1">1</option>
+            {% endif %}
+            {% if linkedInFeedback.rating == 2%}
+            <option value="2" selected>2</option>
+            {% else %}
+            <option value="2">2</option>
+            {% endif %}
+            {% if linkedInFeedback.rating == 3%}
+            <option value="3" selected>3</option>
+            {% else %}
+            <option value="3">3</option>
+            {% endif %}
+            {% if linkedInFeedback.rating == 4%}
+            <option value="4" selected>4</option>
+            {% else %}
+            <option value="4">4</option>
+            {% endif %}
+            {% if linkedInFeedback.rating == 5%}
+            <option value="5" selected>5</option>
+            {% else %}
+            <option value="5">5</option>
+            {% endif %}
+          </select>
           {% else %}
           <a href="https://www.linkedin.com/company/get-set-hired/about/" target="_blank">Link</a>
+          <select onclick="if (typeof(this.selectedIndex) != 'undefined') changeLoc(this.selectedIndex, 'LinkedIn')">
+            <option value="">---</option>
+            {% if linkedInFeedback.rating == 1%}
+            <option value="1" selected>1</option>
+            {% else %}
+            <option value="1">1</option>
+            {% endif %}
+            {% if linkedInFeedback.rating == 2%}
+            <option value="2" selected>2</option>
+            {% else %}
+            <option value="2">2</option>
+            {% endif %}
+            {% if linkedInFeedback.rating == 3%}
+            <option value="3" selected>3</option>
+            {% else %}
+            <option value="3">3</option>
+            {% endif %}
+            {% if linkedInFeedback.rating == 4%}
+            <option value="4" selected>4</option>
+            {% else %}
+            <option value="4">4</option>
+            {% endif %}
+            {% if linkedInFeedback.rating == 5%}
+            <option value="5" selected>5</option>
+            {% else %}
+            <option value="5">5</option>
+            {% endif %}
+          </select>
           {% endif %}
           <br>
           <i class="far fa-file" style="margin-right: 5px;"></i>Resume :
           <a href="/media/resumes/dishtiUberai.pdf" target="_blank">Link</a>
+          <select onclick="if (typeof(this.selectedIndex) != 'undefined') changeLoc(this.selectedIndex, 'Resume')">
+            <option value="">---</option>
+            {% if resumeFeedback.rating == 1%}
+            <option value="1" selected>1</option>
+            {% else %}
+            <option value="1">1</option>
+            {% endif %}
+            {% if resumeFeedback.rating == 2%}
+            <option value="2" selected>2</option>
+            {% else %}
+            <option value="2">2</option>
+            {% endif %}
+            {% if resumeFeedback.rating == 3%}
+            <option value="3" selected>3</option>
+            {% else %}
+            <option value="3">3</option>
+            {% endif %}
+            {% if resumeFeedback.rating == 4%}
+            <option value="4" selected>4</option>
+            {% else %}
+            <option value="4">4</option>
+            {% endif %}
+            {% if resumeFeedback.rating == 5%}
+            <option value="5" selected>5</option>
+            {% else %}
+            <option value="5">5</option>
+            {% endif %}
+          </select>
           <br>
         </div>
       </div>
@@ -139,6 +195,34 @@
         <div class="projectButton buttonSelected" id='projects0button' onclick="toggleVisibility('projects0')">
           <div class="projectButtonTitle">
             Coursera Certificates:
+            <select onclick="if (typeof(this.selectedIndex) != 'undefined') changeLoc(this.selectedIndex, 'Coursera Certificates')">
+              <option value="">---</option>
+              {% if courseraCertificatesFeedback.rating == 1%}
+              <option value="1" selected>1</option>
+              {% else %}
+              <option value="1">1</option>
+              {% endif %}
+              {% if courseraCertificatesFeedback.rating == 2%}
+              <option value="2" selected>2</option>
+              {% else %}
+              <option value="2">2</option>
+              {% endif %}
+              {% if courseraCertificatesFeedback.rating == 3%}
+              <option value="3" selected>3</option>
+              {% else %}
+              <option value="3">3</option>
+              {% endif %}
+              {% if courseraCertificatesFeedback.rating == 4%}
+              <option value="4" selected>4</option>
+              {% else %}
+              <option value="4">4</option>
+              {% endif %}
+              {% if courseraCertificatesFeedback.rating == 5%}
+              <option value="5" selected>5</option>
+              {% else %}
+              <option value="5">5</option>
+              {% endif %}
+            </select>
           </div>
         </div>
       </div>
@@ -242,5 +326,10 @@
 {% endblock content %}
 {% block cdnJS %}{% endblock cdnJS %}
 {% block customJS %}
+<script>
+  function changeLoc(rating, feedbackField){
+    window.location.href = `/rateUser/{{user.id}}/${rating}/${feedbackField}`;
+  }
+</script>
 <script src="{% static 'home/profile.js' %}"></script>
 {% endblock customJS %}

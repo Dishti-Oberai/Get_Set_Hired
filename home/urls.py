@@ -15,7 +15,7 @@ urlpatterns = [
     path('editJobPosting/<int:jobPostingId>', views.editJobPosting, name = 'edit-jobPosting'),
     path('accept/<int:userId>/<int:jobPostingId>/', views.accept, name = 'accept'),
     path('reject/<int:userId>/<int:jobPostingId>/', views.reject, name = 'reject'),
-    path('rateUser/<int:userId>/<int:rating>', views.rateUser, name = 'rate-user'),
+    path('rateUser/<int:userId>/<int:rating>/<str:feedbackField>', views.rateUser, name = 'rate-user'),
     path('upskill/', views.upskill, name = 'upskill'),
     path('shell/', views.shell),
 ]

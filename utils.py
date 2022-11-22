@@ -24,10 +24,6 @@ def check(req, field, fieldName):
     return False
 
 def sendReviewNotification(company, user, text, fb):
-    print(fb.user)
-    print(fb.company)
-    print(fb.rating)
-    print(fb.comments)
     from home.models import Notification
     Notification(sender = company, reciever = user, message = text, feedback = fb).save()
 

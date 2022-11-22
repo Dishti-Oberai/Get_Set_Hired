@@ -43,11 +43,18 @@ class Message(models.Model):
     def __str__(self):
         return f"{self.content}"
 
+FEEDBACK_CHOICES = (
+    ("LinkedIn", "LinkedIn"),
+    ("Resume", "Resume"),
+    ("Coursera Certificates", "Coursera Certificates"),
+    ("Profile", "Profile"),
+)
+
 class Feedback(models.Model):
     user = models.ManyToManyField(User, related_name = 'feedback_user')
     company = models.ManyToManyField(User, related_name = 'feedback_company')
     rating = models.IntegerField()
-    comments = models.TextField()
+    ratingfield = models.CharField(max_length=30, choices = FEEDBACK_CHOICES, default = 'profile')
     def __str__(self):
         return f"{self.rating}"
 

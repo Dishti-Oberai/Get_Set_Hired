@@ -9,6 +9,26 @@
 {% endblock customCSS %}
 {% block content %}
 <br>
+<h2 style="color:#19258c; font-size: 35px; margin-left:42%;"><u>Job Requirements</u></h2>
+<br>
+<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Title: </span>{{jobPosting.title}} </p>
+<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Position: </span>{{jobPosting.position}} </p>
+<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Job Description: </span><a href='/media/{{jobposting.job_description}}'>{{jobPosting.job_description}}</a> </p>
+<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >No of seats: </span>{{jobPosting.no_of_seats}}</p>
+<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Stipend: </span>{{jobPosting.stipend}}</p>
+<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Location: </span>{{jobPosting.location}}</p>
+<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Technologies used: </span></p>
+{% for tags in jobPosting.domain_tags.all %}
+<li style="font-size: 25px; margin-left:20%;">{{tags}}<br></li>
+{% endfor %}<br>
+<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Requirements: </span></p>
+{% for tags in jobPosting.requirement_tags.all %}
+  <li style="font-size: 25px; margin-left:20%;">{{tags}}<br></li>
+{% endfor %}<br>
+<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Status: </span>{{jobPosting.status}}</p>
+<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Experience Required: </span>{{jobPosting.experience_required}}</p>
+
+<br>
 <h2 style="color:#19258c; font-size: 35px; margin-left:42%;"><u>Shortlisted Students</u></h2>
 <table id="table" data-toggle="table" data-filter-control="true" data-toolbar="#toolbar">
   <thead>

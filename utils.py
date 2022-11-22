@@ -13,7 +13,7 @@ def findAverageRating(id):
         rating += curr_rating.rating
     if(len(all_ratings) == 0):
         return -1
-    return rating/len(all_ratings)
+    return round(rating/len(all_ratings), 2)
 
 def check(req, field, fieldName):
     from django.contrib import messages

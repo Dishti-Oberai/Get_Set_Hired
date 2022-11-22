@@ -48,6 +48,7 @@ FEEDBACK_CHOICES = (
     ("Resume", "Resume"),
     ("Coursera Certificates", "Coursera Certificates"),
     ("Profile", "Profile"),
+    ("Skills", "Skills"),
 )
 
 class Feedback(models.Model):

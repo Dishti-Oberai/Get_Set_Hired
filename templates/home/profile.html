@@ -178,6 +178,34 @@
     <div class="leftColumnCard horizontal-center">
       <div class="cardTitle">
         Skills
+        <select onclick="if (typeof(this.selectedIndex) != 'undefined') changeLoc(this.selectedIndex, 'Coursera Certificates')">
+          <option value="">---</option>
+          {% if courseraCertificatesFeedback.rating == 1%}
+          <option value="1" selected>1</option>
+          {% else %}
+          <option value="1">1</option>
+          {% endif %}
+          {% if courseraCertificatesFeedback.rating == 2%}
+          <option value="2" selected>2</option>
+          {% else %}
+          <option value="2">2</option>
+          {% endif %}
+          {% if courseraCertificatesFeedback.rating == 3%}
+          <option value="3" selected>3</option>
+          {% else %}
+          <option value="3">3</option>
+          {% endif %}
+          {% if courseraCertificatesFeedback.rating == 4%}
+          <option value="4" selected>4</option>
+          {% else %}
+          <option value="4">4</option>
+          {% endif %}
+          {% if courseraCertificatesFeedback.rating == 5%}
+          <option value="5" selected>5</option>
+          {% else %}
+          <option value="5">5</option>
+          {% endif %}
+        </select>
       </div>
       <div class="cardDetails vertical-center">
         <div>
@@ -195,29 +223,29 @@
         <div class="projectButton buttonSelected" id='projects0button' onclick="toggleVisibility('projects0')">
           <div class="projectButtonTitle">
             Coursera Certificates:
-            <select onclick="if (typeof(this.selectedIndex) != 'undefined') changeLoc(this.selectedIndex, 'Coursera Certificates')">
+            <select onclick="if (typeof(this.selectedIndex) != 'undefined') changeLoc(this.selectedIndex, 'Skills')">
               <option value="">---</option>
-              {% if courseraCertificatesFeedback.rating == 1%}
+              {% if skillsFeedback.rating == 1%}
               <option value="1" selected>1</option>
               {% else %}
               <option value="1">1</option>
               {% endif %}
-              {% if courseraCertificatesFeedback.rating == 2%}
+              {% if skillsFeedback.rating == 2%}
               <option value="2" selected>2</option>
               {% else %}
               <option value="2">2</option>
               {% endif %}
-              {% if courseraCertificatesFeedback.rating == 3%}
+              {% if skillsFeedback.rating == 3%}
               <option value="3" selected>3</option>
               {% else %}
               <option value="3">3</option>
               {% endif %}
-              {% if courseraCertificatesFeedback.rating == 4%}
+              {% if skillsFeedback.rating == 4%}
               <option value="4" selected>4</option>
               {% else %}
               <option value="4">4</option>
               {% endif %}
-              {% if courseraCertificatesFeedback.rating == 5%}
+              {% if skillsFeedback.rating == 5%}
               <option value="5" selected>5</option>
               {% else %}
               <option value="5">5</option>

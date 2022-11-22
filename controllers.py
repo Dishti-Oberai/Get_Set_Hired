@@ -101,8 +101,8 @@ def profileController(req, profileId):
     resumeFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Resume").first()
     courseraCertificatesFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Coursera Certificates").first()
     profileFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Profile").first()
-    context = {"status": True, "user": profile.user, "profile": profile, "linkedInFeedback": linkedInFeedback, "resumeFeedback": resumeFeedback, "courseraCertificatesFeedback": courseraCertificatesFeedback, "profileFeedback": profileFeedback}
-    print(context)
+    skillsFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Skills").first()
+    context = {"status": True, "user": profile.user, "profile": profile, "linkedInFeedback": linkedInFeedback, "resumeFeedback": resumeFeedback, "courseraCertificatesFeedback": courseraCertificatesFeedback, "profileFeedback": profileFeedback, "skillsFeedback": skillsFeedback}
     if user == False:
         context['website'] = requests.get(profile.website_link).text
 
@@ -130,7 +130,6 @@ def profileEditController(req, profileId):
             tryExcept(req, user, key, data[key])
         user.save()
         data['user'] = user
-        print(data)
         if user.userprofile.isUser:
             form = UpdateUserProfileForm(data, req.FILES, instance = profile)
             if form.is_valid():

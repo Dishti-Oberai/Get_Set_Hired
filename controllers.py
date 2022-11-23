@@ -1,10 +1,10 @@
 from django.contrib import messages
 
 def shellController():
-    from home.models import Tag, Skill
-    count = len(Tag.objects.all())
-    tag = Tag(title = 'tag' + str(count+1))
-    tag.save()
+    from home.models import skill, Skill
+    count = len(skill.objects.all())
+    skill = skill(title = 'skill' + str(count+1))
+    skill.save()
 
     count = len(Skill.objects.all())
     skill = Skill(title = 'skill' + str(count+1))
@@ -171,6 +171,27 @@ def jobPostingController(req, jobPostingId):
     willing_to_hire_users = [(user, findAverageRating(user.id)) for user in willing_to_hire_users]
     rem_users = [(user, findAverageRating(user.id)) for user in rem_users]
 
+    variables = req.POST.dict()
+    if 'skills' in variables.keys():
+        filterskills = req.POST.getlist('skills')
+        filterskills = [int(_) for _ in filterskills]
+        filterBy = variables.get('filterBy')
+
+        filtered_rem_users = []
+        print(filterskills)
+        for user in rem_users:
+            user_skills = list(user[0].skills.all())
+            user_skills = [skill.id for skill in user_skills]
+            if filterBy == 'or':
+                print(user_skills)
+                if any(item in user_skills for item in filterskills):
+                    filtered_rem_users.append(user)
+            else:
+                if all(item in user_skills for item in filterskills):
+                    filtered_rem_users.append(user)
+
+        rem_users = filtered_rem_users
+
     context = {"status": True, "users_accepted":users_accepted, "jobPosting": jobposting, "willing_to_hire_users": willing_to_hire_users, 'rem_users': rem_users}
     return context
 
@@ -180,10 +201,10 @@ def createJobPostingController(req):
 
     if req.method == "POST":
         data = req.POST.dict()
-        domain_tags = req.POST.getlist('domain_tags')
-        requirement_tags = req.POST.getlist('requirement_tags')
-        data['domain_tags'] = domain_tags
-        data['requirement_tags'] = requirement_tags
+        domain_skills = req.POST.getlist('domain_skills')
+        requirement_skills = req.POST.getlist('requirement_skills')
+        data['domain_skills'] = domain_skills
+        data['requirement_skills'] = requirement_skills
         data['company'] = req.user
         form = CreateJobPostingForm(data, req.FILES)
         if form.is_valid():
@@ -207,10 +228,10 @@ def editJobPostingController(req, jobPostingId):
     jobPosting = JobPosting.objects.get(id = jobPostingId)
     if req.method == "POST":
         data = req.POST.dict()
-        domain_tags = req.POST.getlist('domain_tags')
-        requirement_tags = req.POST.getlist('requirement_tags')
-        data['domain_tags'] = domain_tags
-        data['requirement_tags'] = requirement_tags
+        domain_skills = req.POST.getlist('domain_skills')
+        requirement_skills = req.POST.getlist('requirement_skills')
+        data['domain_skills'] = domain_skills
+        data['requirement_skills'] = requirement_skills
         data['company'] = req.user
 
         form = EditJobPostingForm(data, req.FILES, instance = jobPosting)

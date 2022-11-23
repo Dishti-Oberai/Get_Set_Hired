@@ -18,16 +18,15 @@
 <p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Stipend: </span>{{jobPosting.stipend}}</p>
 <p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Location: </span>{{jobPosting.location}}</p>
 <p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Technologies used: </span></p>
-{% for tags in jobPosting.domain_tags.all %}
-<li style="font-size: 25px; margin-left:20%;">{{tags}}<br></li>
+{% for skills in jobPosting.domain_skills.all %}
+<li style="font-size: 25px; margin-left:20%;">{{skills}}<br></li>
 {% endfor %}<br>
 <p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Requirements: </span></p>
-{% for tags in jobPosting.requirement_tags.all %}
-  <li style="font-size: 25px; margin-left:20%;">{{tags}}<br></li>
+{% for skills in jobPosting.requirement_skills.all %}
+  <li style="font-size: 25px; margin-left:20%;">{{skills}}<br></li>
 {% endfor %}<br>
 <p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Status: </span>{{jobPosting.status}}</p>
 <p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Experience Required: </span>{{jobPosting.experience_required}}</p>
-
 <br>
 <h2 style="color:#19258c; font-size: 35px; margin-left:42%;"><u>Shortlisted Students</u></h2>
 <table id="table" data-toggle="table" data-search = "true" data-filter-control="true" data-toolbar="#toolbar1">
@@ -58,6 +57,24 @@
   </tbody>
 </table>
 <br>
+<form method="POST">
+  {% csrf_token %}
+  Skills-:
+  <select name="skills" id="skills" multiple>
+    <option value="">---</option>
+    {% for skill in jobPosting.requirement_skills.all %}
+      <option value="{{skill.id}}">{{skill}}</option>
+    {% endfor %}
+  </select>
+  <br>
+  Filter By-:
+  <select name="filterBy" id="filterBy">
+    <option value="or">or</option>
+    <option value="and">and</option>
+  </select>
+  <input type="submit" value="Submit">
+  <input type="submit" value="Clear filters">
+</form>
 <br>
 <h2 style="color:#19258c; font-size: 35px; margin-left:42%;"><u>Eligible Students</u></h2>
 <table id="table" data-toggle="table" data-search="true" data-filter-control="true" data-toolbar="#toolbar2">
@@ -65,6 +82,7 @@
     <tr>
       <th data-field="name" data-sortable="true" >Name</th>
       <th data-field="rating" data-sortable="true">Rating</th>
+      <th data-field="skills" data-sortable="true">Skills</th>
       <th data-field="accept" data-sortable="false" data-filter-control="select">Change Status</th>
     </tr>
   </thead>
@@ -73,6 +91,11 @@
     <tr>
       <td><a href="/profile/{{user.0.id}}">{{user.0}}</a></td>
       <td>{{user.1}}</td>
+      <td>
+        {% for skill in user.0.skills.all %}
+          {{skill}}
+        {% endfor %}
+      </td>
       <td><a href="/accept/{{user.0.id}}/{{jobPosting.id}}">Accept</a></td>
     </tr>
     {% endfor %}

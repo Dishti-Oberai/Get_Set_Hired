@@ -8,11 +8,6 @@ class Skill(models.Model):
     def __str__(self):
         return f"{self.title}"
 
-class Tag(models.Model):
-    title = models.CharField(max_length=20)
-    def __str__(self):
-        return f"{self.title}"
-
 class Certificate(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     link = models.TextField()
@@ -29,8 +24,8 @@ class JobPosting(models.Model):
     no_of_seats = models.IntegerField()
     stipend = models.IntegerField()
     location = models.CharField(max_length = 40)
-    domain_tags = models.ManyToManyField(Tag, related_name = 'jobposting_domain_tags')
-    requirement_tags = models.ManyToManyField(Tag, related_name = 'jobposting_requirement_tags')
+    domain_skills = models.ManyToManyField(Skill, related_name = 'jobposting_domain_skills')
+    requirement_skills = models.ManyToManyField(Skill, related_name = 'jobposting_requirement_skills')
     status = models.CharField(max_length = 10, choices = (("open", "open"), ("closed", "closed")), default = 'open')
     experience_required = models.IntegerField(default = 0)
     willing_to_hire = models.ManyToManyField(User, related_name = 'users_willing_to_hire', blank = True)

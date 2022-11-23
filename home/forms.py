@@ -21,12 +21,12 @@ class CreateJobPostingForm(ModelForm):
     class Meta:
         model = JobPosting
         fields = ('title', 'job_description', 'position', 'company', 'no_of_seats',
-                  'stipend', 'location', 'domain_tags', 'requirement_tags', 'status', 'experience_required')
+                  'stipend', 'location', 'domain_skills', 'requirement_skills', 'status', 'experience_required')
 class EditJobPostingForm(ModelForm):
     class Meta:
         model = JobPosting
         fields = ('title', 'job_description', 'position', 'company', 'no_of_seats',
-                  'stipend', 'location', 'domain_tags', 'requirement_tags', 'status', 'experience_required')
+                  'stipend', 'location', 'domain_skills', 'requirement_skills', 'status', 'experience_required')
 
 
 class UpdateUserProfileForm(ModelForm):

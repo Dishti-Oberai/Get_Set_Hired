@@ -5,22 +5,22 @@
     {% csrf_token %}
     <fieldset>
         <label for="username">USER NAME
-            <input type="text" id="username" placeholder="Username *" required>
+            <input type="text" id="username" name = "username" placeholder="Username *" required>
         </label>
         <label for="first_name">FIRST NAME
-            <input type="text" id="first_name" placeholder="First Name *" required>
+            <input type="text" id="first_name" name = "first_name" placeholder="First Name *" required>
         </label>
         <label for="last_name">LAST NAME
-            <input type="text" id="last_name" placeholder="Username *" required>
+            <input type="text" id="last_name" name = "last_name" placeholder="Username *" required>
         </label>
         <label for="email">EMAIL
             <input type="email" name="email" id="email" placeholder="Email address * " required>
         </label>
         <label for="password1">PASSWORD
-            <input type="email" name="email" id="password1" placeholder="Password * " required>
+            <input type="password" name="password1" id="password1" placeholder="Password * " required>
         </label>
         <label for="password2">CONFIRM YOUR PASSWORD
-            <input type="email" name="email" id="password2" placeholder="Confirm your password * " required>
+            <input type="password" name="password2" id="password2" placeholder="Confirm your password * " required>
         </label>
 <!--        <label for="phone">PHONE NUMBER-->
 <!--            <input type="tel" name="phone" id="phone" placeholder="+91- XXXXXXXXXX " required>-->

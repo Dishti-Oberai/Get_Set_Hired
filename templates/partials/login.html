@@ -33,6 +33,15 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <div class="row login-main">
+                        {% block messages %}
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% endblock messages %}
                         {% block content %}{% endblock content %}
                     </div>
                 </div>

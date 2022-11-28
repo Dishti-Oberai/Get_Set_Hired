@@ -8,13 +8,22 @@ def main(req):
         return render(req, 'home/main.html')
 
 @user_is_not_logged_in
-def login(req):
+def login_student(req):
     if req.method == 'POST':
         context = loginController(req)
         if context['status']:
             return redirect('/')
-        return redirect('/login/')
-    return render(req, 'home/login.html')
+        return redirect('/login_student/')
+    return render(req, 'home/login_student.html')
+
+@user_is_not_logged_in
+def login_startup(req):
+    if req.method == 'POST':
+        context = loginController(req)
+        if context['status']:
+            return redirect('/')
+        return redirect('/login_startup/')
+    return render(req, 'home/login_startup.html')
 
 @user_is_not_logged_in
 def register(req):

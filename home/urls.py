@@ -4,9 +4,9 @@ from django.urls import path
 urlpatterns = [
     path('', views.index, name = 'index'),
     path('main/', views.main, name = 'main'),
-    path('login/', views.login, name = 'login'),
-    path('login_student/', views.login, name = 'login_student'),
-    path('login_startup/', views.login, name = 'login_startup'),
+    # path('login/', views.login, name = 'login'),
+    path('login_student/', views.login_student, name = 'login_student'),
+    path('login_startup/', views.login_startup, name = 'login_startup'),
     path('register/', views.register, name = 'register'),
     path('userRegister/', views.userRegister, name = 'user-register'),
     path('companyRegister/', views.companyRegister, name = 'company-register'),

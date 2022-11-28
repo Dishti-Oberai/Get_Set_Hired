@@ -1,0 +1,62 @@
+{% extends 'partials/base.html' %}
+{% load socialaccount %}
+{% load static %}
+{% block title %}Login | Get_Set_Hired{% endblock title %}
+{% block cdnCSS %}{% endblock cdnCSS %}
+{% block customCSS %}
+<link rel="stylesheet" href="{% static 'home/login.css' %}">
+{% endblock customCSS %}
+{% block navbar %}{% endblock navbar %}
+{% block content %}
+<br><br><br><br><br><br><br><br><br><br>
+<section class="vh-100">
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form method="POST">
+                {% csrf_token %}
+                <h1>Company Login</h1>
+                <input type="text" placeholder="Name" name='username' />
+                <input type="password" placeholder="Password" name='password' />
+                <button>Login</button>OR<br>
+                <button type = "button"><a href="/accounts/linkedin_oauth2/login/?process=login&next=%2F">Login via LinkedIn</a></button><br>
+                <button type = "button"><a href="{% provider_login_url 'google' %}">Login via Google</a></button><br>
+                <button type = "button"><a href="{% url 'register' %}">Signup</a></button><br>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form method="POST">
+                {% csrf_token %}
+                <h1>Student Login</h1>
+                <input type="text" placeholder="Name" name='username' />
+                <input type="password" placeholder="Password" name='password' />
+                <button>Login</button>OR<br>
+                <button type = "button"><a href="/accounts/linkedin_oauth2/login/?process=login&next=%2F">Login via LinkedIn</a></button><br>
+                <button type = "button"><a href="{% provider_login_url 'google' %}">Login via Google</a></button><br>
+                <button type = "button"><a href="{% url 'register' %}">Signup</a></button><br>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Student Login</h1>
+                    <p>To login as a student, please click the button below</p>
+                    <button class="ghost" id="signIn">Login</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Company Login</h1>
+                    <p>To login as a Company, please click the button below
+                    </p>
+                    <button class="ghost" id="signUp">LogIn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    </footer>
+</section>
+{% endblock content %}
+{% block footer %}{% endblock footer %}
+{% block cdnJS %}{% endblock cdnJS %}
+{% block customJS %}
+<script src="{% static 'home/login.js' %}"></script>
+{% endblock customJS %}

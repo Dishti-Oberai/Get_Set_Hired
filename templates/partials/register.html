@@ -12,12 +12,7 @@
 
 <body>
     <div class="container">
-        <header>
-            <h1>USER PROFILE</h1>
-            <p>Candidate Registration Form</p>
-        </header>
-        <main>
-            {% block messages %}
+        {% block messages %}
             {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
@@ -25,11 +20,11 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            {% endblock messages %}
-            {% block content %}{% endblock content %}
-            <div class="alert">
-                <span>information submitted sucessfully</span>
-            </div>
+        {% endblock messages %}
+        {% block content %}{% endblock content %}
+        <div class="alert">
+            <span>information submitted sucessfully</span>
+        </div>
         </main>
     </div>
     <script src="{% static 'home/register.js' %}"></script>

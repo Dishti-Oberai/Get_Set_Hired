@@ -1,6 +1,10 @@
 {% extends 'partials/register.html' %}
 {% load static %}
 {% block content %}
+<header>
+    <h1>Candidate Registration Form</h1>
+</header>
+<main>
 <form method="POST" class="user" action='/register_student/'>
     {% csrf_token %}
     <fieldset>

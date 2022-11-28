@@ -5,6 +5,56 @@
 <link rel="stylesheet" href="{% static 'home/register.css' %}">
 {% endblock customCSS %}
 {% block content %}
+<div style="    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));">
+<form method="POST" class="company" action='/createJobPosting/'>
+    {% csrf_token %}
+    <fieldset>
+        <label for="title">&nbsp&nbspTITLE
+            <input type="text" id="title" name = "title" placeholder="Title *" required>
+        </label>
+        <label for="position">POSITION
+            <input type="text" id="position" name = "position" placeholder="Position *" required>
+        </label>
+        <label for="job_description">JOB DESCRIPTION
+            <input type="file" name="job_description" id="job_description" placeholder="Job Description * " required>
+        </label>
+        <label for="no_of_seats">NUMBER OF SEATS
+            <input type="number" name="no_of_seats" id="no_of_seats" placeholder="Number of Seats * " required>
+        </label>
+        <label for="stipend">Stipend
+            <input type="number" name="stipend" id="stipend" placeholder="Stipend * " required>
+        </label>
+        <label for="location">Location
+            <input type="text" name="location" id="location" placeholder="Location * " required>
+        </label>
+        <label for="experience_required">Experience Required
+            <input type="number" name="experience_required" id="experience_required" placeholder="Experience Required * " required>
+        </label>
+        <div class="field">
+                    Status:
+                    <select name="status" id="">
+                        <option value="open">Open</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                </div>
+                <!--                Requirement tags and Domain tags-->
+                <!--                Status Tags-->
+                <div class="field">
+                    <label>Technologies </label>
+                    {{ jobPostingForm.domain_skills }}
+                </div>
+                <br>
+                <br>
+                <div class="field">
+                    <label>Requirement Tags </label>
+                    {{ jobPostingForm.requirement_skills }}
+                </div>
+                <br>
+    </fieldset>
+
+    <button type="submit">CREATE JOB</button>
+</form>
+{% comment %}
 <br>
 <br>
 <div class="wrapper" style="margin-left: 25%; margin-top: 10px; margin-bottom: 50px;">
@@ -65,4 +115,6 @@
         </div>
     </div>
 </div>
+{% endcomment %}
+    </div>
 {% endblock content %}

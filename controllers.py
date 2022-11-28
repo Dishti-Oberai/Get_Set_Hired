@@ -77,12 +77,14 @@ def indexController(req):
     from home.models import Notification 
     if req.user.userprofile.isUser:
         context["image"] = req.user.userprofile.image
+        context["page"] = 'home/index_student.html'
     else:
         from home.models import JobPosting
         jobPostings_closed = JobPosting.objects.all().filter(status = 'closed')
         jobPostings_open = JobPosting.objects.all().filter(status = 'open')
         context["jobPostings_open"] = jobPostings_open
         context["jobPostings_closed"] = jobPostings_closed
+        context["page"] = 'home/index_startup.html'
     context["notifications"] = Notification.objects.filter(reciever = req.user).order_by('-time')
     return context
 

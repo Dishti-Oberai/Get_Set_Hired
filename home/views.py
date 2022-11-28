@@ -45,7 +45,7 @@ def register_startup(req):
 @user_profile_completed
 def index(req):
     context = indexController(req)
-    return render(req, 'home/index.html', context)
+    return render(req, context['page'], context)
 
 @login_required
 @user_profile_completed

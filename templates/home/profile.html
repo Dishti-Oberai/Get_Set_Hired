@@ -1,11 +1,13 @@
 {% extends 'partials/base.html' %}
 {% load static %}
-{% block title %}Profile | Get_Set_Hired{% endblock title %}
+{% comment %} {% block cdnCSS %}{% endblock cdnCSS %} {% endcomment %}
+{% comment %} {% block navbar %}{% endblock navbar %} {% endcomment %}
 {% block customCSS %}
 <link rel="stylesheet" href="{% static 'home/profile.css' %}">
 {% endblock customCSS %}
-{% block cdnCSS %}{% endblock cdnCSS %}
-{% block navbar %}{% endblock navbar %}
+
+{% comment %}
+{% block title %}Profile | Get_Set_Hired{% endblock title %}
 {% block content %}
 {% if user.userprofile.isUser %}
 <div id="profile" class="horizontal-center">
@@ -301,7 +303,7 @@
           <!--          {% else %}-->
           <!--          NA-->
           <!--          {% endif %}-->
-          {% comment %} <i class="far fa-file" style="margin-right: 5px;"></i>Website : {% endcomment %}
+          <!--          <i class="far fa-file" style="margin-right: 5px;"></i>Website :-->
           <!--          {% if profile_user.profile.cv|length > 0%}-->
           <!--          <a href="{{profile_user.profile.cv.url}}" target="_blank">-->
           <!--            Click Here-->
@@ -360,4 +362,61 @@
   }
 </script>
 <script src="{% static 'home/profile.js' %}"></script>
-{% endblock customJS %}
+{% endblock customJS %} {% endcomment %}
+
+{% block content %}
+<div class="wrapper">
+    <section class="left-section">
+        <div class="profile-picture">
+            <img src="" alt="profile picture" />
+        </div>
+        <div class="job">
+            <h1 class="title">Certificates</h1>
+            <h3>Coursera:</h3>
+            <p class="description">www.coursera.com</p>
+        </div>
+    </section>
+    <section class="right-section">
+        <div class="about-user">
+            <a href="#">(EDIT)</a>
+            <h1 class="user-name">Pritish Chugh</h1>
+            <h3 class="current-job">Software Engineer_(take the input given in the for domain field)</h3>
+            <p class="info">Here take the input from the form of the field 1 line about yourself</p>
+
+            <h1 class="title about">About me</h1>
+            <h3>Contact</h3>
+            <ul class="contact-list">
+                <li class="address">Take here the input of the adress fielf from the form</li>
+                <li class="phone">Phone number field of the form </li>
+                <li class="mail">pritish@example.com</li>
+                <li class="website">GitHub: <a href="#">www.github/pritish22.com (blank by default)</a></li>
+            </ul>
+        </div>
+        <div class="skills">
+            <h1 class="title">Skills</h1>
+            <ul>
+                <li>Photoshop</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Javascript</li>
+                <li>UX Design</li>
+            </ul>
+        </div>
+        <div class="skills">
+            <h1 class="title">Education</h1>
+            <ul>
+                <li>College of Undergraduation: (name of the college taken in forr)</li>
+                <li>Branch:</li>
+                <li>CGPA: (cgpa from form)</li>
+            </ul>
+        </div>
+        <div class="skills">
+            <h1 class="title">Work Experience</h1>
+            <ul>
+                <li>Years of experience : (no. of years of expreience)</li>
+                <li>Willing to relocate: (Yes or no as per form)</li>
+            </ul>
+        </div>
+    </section>
+</div>
+{% endblock content %}

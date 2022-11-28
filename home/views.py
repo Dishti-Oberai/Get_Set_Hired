@@ -26,24 +26,20 @@ def login_startup(req):
     return render(req, 'home/login_startup.html')
 
 @user_is_not_logged_in
-def register(req):
-    return render(req, 'home/register.html')
-
-@user_is_not_logged_in
-def userRegister(req):
+def register_student(req):
     if req.method == 'POST':
         context = userRegisterController(req)
         if context['status']:
             return redirect('index')
-    return redirect('/register')
+    return render(req, 'home/register_student.html')
 
 @user_is_not_logged_in
-def companyRegister(req):
+def register_startup(req):
     if req.method == 'POST':
         context = companyRegisterController(req)
         if context['status']:
             return redirect('index')
-    return redirect('/register')
+    return render(req, 'home/register_startup.html')
 
 @login_required
 @user_profile_completed

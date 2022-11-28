@@ -1,0 +1,129 @@
+{% extends 'partials/register.html' %}
+{% load static %}
+{% block content %}
+<form action="">
+    <fieldset>
+        <label for="name">&nbsp&nbspFIRST NAME
+            <input type="text" id="name" placeholder="Your Full Name *" required>
+        </label>
+        <label for="username">LAST NAME
+            <input type="text" id="username" placeholder="Username *" required>
+        </label>
+        <label for="email">EMAIL
+            <input type="email" name="email" id="email" placeholder="Email address * " required>
+        </label>
+        <label for="phone">PHONE NUMBER
+            <input type="tel" name="phone" id="phone" placeholder="+91- XXXXXXXXXX " required>
+        </label>
+        <label for="domain">DOMAIN
+            <input type="text" name="domain" id="domain" placeholder="Robotics/Simulation/Hardware/......"
+            required>
+        </label>
+        <label for="one_line">ABOUT YOUSELF
+            <input type="text" name="one_line" id="one_line" placeholder="ONE LINE about YOURSELF" required>
+        </label>
+        <label for="github">GITHUB
+            <input type="text" name="github" id="github" placeholder="GITHUB repository link" required>
+        </label>
+        <label for="address">ADDRESS
+            <input type="text" name="address" id="address" placeholder="Address" required>
+        </label>
+        <label for="skills">SKILLS
+            <input type="text" name="skills" id="skills" placeholder="Skills" required>
+        </label>
+        <label for="college">College
+            <input type="text" name="college" id="college" placeholder="College of undergraduation"
+            required>
+        </label>
+        <label for="cgpa">CGPA
+            <input type="number" name="cgpa" id="cgpa" placeholder="CGPA" required>
+        </label>
+        <label for="year">YEARS OF EXPERIENCE
+            <input type="number" name="year" id="year" placeholder="0-xx" required>
+        </label>
+        <label for="will">WILLING TO RELOCATE
+            <input type="text" name="will" id="will" placeholder="Yes/No" required>
+        </label>
+    </fieldset>
+    <label for="terms-and-condition">
+        <input type="checkbox" name="terms" id="terms-and-condition" checked> <span class="terms">I accept
+            <a href="#">terms and conditions</a> </span>
+    </label>
+    <button type="submit">CREATE ACCOUNT</button>
+</form>
+{% endblock content %}
+{% comment %} {% block title %}Register | Get_Set_Hired{% endblock title %}
+{% block customCSS %}
+<link rel="stylesheet" href="{% static 'home/register.css' %}">
+{% endblock customCSS %}
+{% block cdnCSS %}{% endblock cdnCSS %}
+{% block navbar %}{% endblock navbar %} {% endcomment %}
+{% comment %} <div class="wrapper">
+    <div class="title-text">
+        <div class="title user">User Registeration </div>
+        <div class="title company">Company Registeration</div>
+    </div>
+    <div class="form-container">
+        <div class="slide-controls">
+            <input type="radio" name="slide" id="user" checked>
+            <input type="radio" name="slide" id="company">
+            <label for="user" class="slide user">User</label>
+            <label for="company" class="slide company">Company</label>
+            <div class="slider-tab"></div>
+        </div>
+        <div class="form-inner">
+            <form method="POST" class="user" action='/userRegister/'>
+                {% csrf_token %}
+                <div class="field">
+                    <input type="text" placeholder="Username" name='username' required>
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="First name" name='first_name' required>
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="Last name" name='last_name' required>
+                </div>
+                <div class="field">
+                    <input type="email" placeholder="Email address" name='email' required>
+                </div>
+                <div class="field">
+                    <input type="password" placeholder="Password" name='password1' required>
+                </div>
+                <div class="field">
+                    <input type="password" placeholder="Confirm password" name="password2" required>
+                </div>
+                <br><br>
+                <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Register">
+                </div>
+                <br>
+                <div class="user-link">Already a member? <a href="{% url 'login' %}">Login now</a></div>
+            </form>
+            <form method="POST" class="company" action='/companyRegister/'>
+                {% csrf_token %}
+                <div class="field">
+                    <input type="text" placeholder="Username" name='username' required>
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="Company Name" name="username" required>
+                </div>
+                <div class="field">
+                    <input type="email" placeholder="Email Address" name="email" required>
+                </div>
+                <div class="field">
+                    <input type="password" placeholder="Password" name="password1" required>
+                </div>
+                <div class="field">
+                    <input type="password" placeholder="Confirm password" name="password2" required>
+                </div>
+                <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Register">
+                </div>
+                <br>
+                <div class="company-link">Already a member? <a href="{% url 'login' %}">Login now</a></div>
+            </form>
+        </div>
+    </div>
+</div> {% endcomment %}

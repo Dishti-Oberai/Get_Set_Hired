@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Registration Form</title>
+    <link rel="stylesheet" href="{% static 'home/register.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>USER PROFILE</h1>
+            <p>Candidate Registration Form</p>
+        </header>
+        <main>
+            {% block content %}{% endblock content %}
+            <div class="alert">
+                <span>information submitted sucessfully</span>
+            </div>
+        </main>
+    </div>
+    <script src="{% static 'home/register.js' %}"></script>
+</body>
+
+</html>

@@ -6,7 +6,7 @@
 {% endblock customCSS %}
 {% block content %}
 <div style="    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));">
-<form method="POST" class="company" action='/createJobPosting/'>
+<form method="POST" class="company" action='/createJobPosting/'  enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset>
         <label for="title">&nbsp&nbspTITLE

@@ -80,8 +80,8 @@ def indexController(req):
         context["page"] = 'home/index_student.html'
     else:
         from home.models import JobPosting
-        jobPostings_closed = JobPosting.objects.all().filter(status = 'closed')
-        jobPostings_open = JobPosting.objects.all().filter(status = 'open')
+        jobPostings_closed = JobPosting.objects.all().filter(status = 'closed').filter(company = req.user.id)
+        jobPostings_open = JobPosting.objects.all().filter(status = 'open').filter(company = req.user.id)
         context["jobPostings_open"] = jobPostings_open
         context["jobPostings_closed"] = jobPostings_closed
         context["page"] = 'home/index_startup.html'

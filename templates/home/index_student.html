@@ -1,69 +1,75 @@
 {% extends 'partials/base.html' %}
-{% block title %}Index | Get_Set_Hired{% endblock title %}
 {% load static %}
-{% block customCSS %}
-<link rel="stylesheet" type="text/css" href="{% static 'home/mainpp.css' %}">
-{% endblock customCSS %}
 {% block content %}
-<div class="project_cards">
-    <div class="" style="display: flex; flex-wrap: wrap;justify-content:center;" id="all-projects">
+<link rel="stylesheet" type="text/css" href="{% static 'home/index_startup.css' %}">
+<div class="wrapper1">
+    <div class="circular-slider1">
+
         {% for notification in notifications %}
-        <div id="projectNumber{{ notification.id }}">
-            <div class="blog-container">
-                {% if notification.jobposting %}
-                <div class="blog-header" style="display: flex; flex-wrap: wrap;">
-                    <span style="flex: 1 0 45%; ">
-                        <h3 style="margin-top: 10px; color:#858796;"><a
-                                href="{% url 'profile' notification.jobposting.company.id %}">{{notification.jobposting.company}}</a>
-                        </h3>
-                    </span>
+        <div class="card1">
+            <div class="content1">
+                <div id="projectNumber{{ notification.id }}">
+                    <div class="blog-container">
+                        {% if notification.jobposting %}
+                        <div class="blog-header" style="display: flex; flex-wrap: wrap;">
+                            <span style="flex: 1 0 45%; ">
+                                <h3 style="margin-top: 10px; color:#858796;"><a
+                                        href="{% url 'profile' notification.jobposting.company.id %}">{{notification.jobposting.company}}</a>
+                                </h3>
+                            </span>
+                        </div>
+                        {% endif %}
+                        <div class="blog-body">
+                            <div class="blog-title demo-a">
+                                <h1><a href="">{{ notification.message }}</a></h1>
+                            </div>
+                            {% if notification.message != "Reviewed" %}
+                            <div class="blog-summary demo-2">
+                                <a href='/media/{{notification.jobposting.job_description}}'>Job Description</a>
+                            </div>
+                            <div class="blog-tags">
+                                <br class="main-br">
+                                <ul>
+                                    <li>
+                                        <a href="/acceptJob/{{notification.jobposting.id}}">Accept</a>
+                                    </li>
+                                    <li>
+                                        <a href="/rejectJob/{{notification.jobposting.id}}">Reject</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            {% else %}
+                            <div class="blog-summary demo-2">
+                                By company-:<a href='/profile/{{notification.sender.id}}'> {{notification.sender}}</a>
+                            </div>
+                            <div class="blog-tags">
+                                <br class="main-br">
+                                <ul>
+                                    <li>
+                                        Given Rating -: <a href="">{{notification.feedback.rating}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <hr class="main-page-hr">
+
+                    </div>
                 </div>
-                {% endif %}
-                <div class="blog-body">
-                    <div class="blog-title demo-a">
-                        <h1><a href="">{{ notification.message }}</a></h1>
-                    </div>
-                    {% if notification.message != "Reviewed" %}
-                    <div class="blog-summary demo-2">
-                        <a href='/media/{{notification.jobposting.job_description}}'>Job Description</a>
-                    </div>
-                    <div class="blog-tags">
-                        <br class="main-br">
-                        <ul>
-                            <li>
-                                <a href="/acceptJob/{{notification.jobposting.id}}">Accept</a>
-                            </li>
-                            <li>
-                                <a href="/rejectJob/{{notification.jobposting.id}}">Reject</a>
-                            </li>
-                        </ul>
-                    </div>
-                    {% else %}
-                    <div class="blog-summary demo-2">
-                        By company-:<a href='/profile/{{notification.sender.id}}'> {{notification.sender}}</a>
-                    </div>
-                    <div class="blog-tags">
-                        <br class="main-br">
-                        <ul>
-                            <li>
-                                Given Rating -: <a href="">{{notification.feedback.rating}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    {% endif %}
+            </div>
+            <div class="info1">
+                <div class="smile1">: )</div>
+                <div class="name1"></div>
+                <div class="msg1">
+                    Swipe left or right
                 </div>
-                <hr class="main-page-hr">
             </div>
         </div>
         {% endfor %}
-        {% if user.userprofile.isUser %}
-        {% if notifications.count == 0 %}
-        <div>No notifications</div>
-        {% endif %}
-        {% endif %}
     </div>
 </div>
 
+<script src="{% static 'home/index_startup.js' %}"></script>
 {% endblock content %}
 {% block customScripts %}
 <script src="{% static 'home/index.js' %}"></script>

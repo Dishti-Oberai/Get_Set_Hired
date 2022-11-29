@@ -2,15 +2,15 @@
 {% load static %}
 {% block title %}Edit Profile | Get_Set_Hired{% endblock title %}
 {% block customCSS %}
-<link rel="stylesheet" href="{% static 'home/register.css' %}">
+<link rel="stylesheet" href="{% static 'home/register1.css' %}">
 {% endblock customCSS %}
 {% block content %}
-<div class="wrapper" style="margin-left: 25%; margin-top: 10px; margin-bottom: 50px;">
+<div class="wrapper" style="margin-top: 10px; margin-bottom: 50px; background:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));">
     <div class="title-text">
         {% if user.userprofile.isUser %}
-        <div class="title user">User Profile </div>
+        <div class="title user" style="color: white; margin-left:45%;">USER PROFILE </div>
         {% else %}
-        <div class="title company">Company Profile</div>
+        <div class="title company" style="color: white; margin-left:45%;">COMPANY PROFILE</div>
         {% endif %}
     </div>
     <div class="form-container">
@@ -47,9 +47,8 @@
                 </div>
                 <div class="field btn">
                     <div class="btn-layer"></div>
-                    <input type="submit" value="Update">
+                    <input type="submit" value="Update" style="margin-left: 600%;">
                 </div>
-                <div class="user-link"><a href="{% url 'account_logout' %}" style="color:white;">Logout</a></div>
             </form>
             {% else %}
             <form method="POST" class="user" action='/profileEdit/{{user.id}}'>
@@ -71,9 +70,8 @@
                 </div>
                 <div class="field btn">
                     <div class="btn-layer"></div>
-                    <input type="submit" value="Update">
+                    <input type="submit" value="Update" style="margin-left: 600%;">
                 </div>
-                <div class="user-link"><a href="{% url 'account_logout' %}">Logout</a></div>
             </form>
             <br><br>
             {% endif %}

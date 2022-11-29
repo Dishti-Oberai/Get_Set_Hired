@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Mono:ital@1&family=Ubuntu&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url();
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.container {
+  width: 500px;
+  margin: 50px auto;
+}
+
+form {
+  width: 100%;
+  font-family: 'Roboto Mono', monospace;
+}
+
+fieldset {
+  padding: 20px;
+  border: none;
+  border-bottom: 1px solid gray;
+  margin: 20px;
+}
+
+header p,
+header h1 {
+  text-align: center;
+  padding: 10px;
+  color: white;
+  font-weight: normal;
+  text-shadow: 2px 2px 4px #000000;
+  letter-spacing: ;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+label {
+  width: 100%;
+  margin: 15px;
+  color: whitesmoke;
+  font-weight: normal;
+  font-size: 14px;
+  text-shadow: 2px 2px 4px #000000;
+  letter-spacing: 2px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  display: block;
+  margin: 20px 10px 20px 10px;
+  border: 1px solid whitesmoke;
+  outline: none;
+  border-radius: 15px;
+  color: white;
+  background-color: inherit;
+  border: ;
+  border-bottom: ;
+  /* background-color: rgb(241, 237, 194);
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.22));
+    box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.22), -7px -7px 20px rgba(255, 255, 255, 0.22)*/
+}
+
+main {
+  position: relative;
+}
+
+#terms-and-condition {
+  width: unset;
+  display: unset;
+  margin: unset;
+  margin: 20px 10px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.terms {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.terms a {
+  color: white;
+}
+
+.terms a:hover {
+  color: gray;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 20px;
+  background-color: aliceblue;
+  border-radius: 20px;
+  box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.22);
+  color: black;
+  border: 1px solid black;
+  cursor: pointer;
+  outline: none;
+  font-weight: normal;
+  font-family: 'Roboto Mono', monospace;
+}
+
+button:hover {
+  background-color: gray;
+  color: white;
+}
+
+.alert {
+  width: 500px;
+  height: 100px;
+  background-color: rgba(47, 79, 79, 0.589);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.22));
+  background-color: white;
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-weight: normal;
+  border-radius: 15px;
+  position: absolute;
+  bottom: 50%;
+  display: none;
+
+}

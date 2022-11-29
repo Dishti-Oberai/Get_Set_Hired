@@ -1,0 +1,169 @@
+{% extends 'partials/base.html' %}
+{% block title %}Index | Get_Set_Hired{% endblock title %}
+{% load static %}
+{% block customCSS %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/mainpp.css' %}">
+{% endblock customCSS %}
+{% block content %}
+<div class="project_cards">
+    <div class="" style="display: flex; flex-wrap: wrap;justify-content:center;" id="all-projects">
+        {% for notification in notifications %}
+        <div id="projectNumber{{ notification.id }}">
+            <div class="blog-container">
+                {% if notification.jobposting %}
+                <div class="blog-header" style="display: flex; flex-wrap: wrap;">
+                    <span style="flex: 1 0 45%; ">
+                        <h3 style="margin-top: 10px; color:#858796;"><a
+                                href="{% url 'profile' notification.jobposting.company.id %}">{{notification.jobposting.company}}</a>
+                        </h3>
+                    </span>
+                </div>
+                {% endif %}
+                <div class="blog-body">
+                    <div class="blog-title demo-a">
+                        <h1><a href="">{{ notification.message }}</a></h1>
+                    </div>
+                    {% if notification.message != "Reviewed" %}
+                    <div class="blog-summary demo-2">
+                        <a href='/media/{{notification.jobposting.job_description}}'>Job Description</a>
+                    </div>
+                    <div class="blog-tags">
+                        <br class="main-br">
+                        <ul>
+                            <li>
+                                <a href="/acceptJob/{{notification.jobposting.id}}">Accept</a>
+                            </li>
+                            <li>
+                                <a href="/rejectJob/{{notification.jobposting.id}}">Reject</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <div class="blog-summary demo-2">
+                        By company-:<a href='/profile/{{notification.sender.id}}'> {{notification.sender}}</a>
+                    </div>
+                    <div class="blog-tags">
+                        <br class="main-br">
+                        <ul>
+                            <li>
+                                Given Rating -: <a href="">{{notification.feedback.rating}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+                <hr class="main-page-hr">
+            </div>
+        </div>
+        {% endfor %}
+        {% if user.userprofile.isUser %}
+        {% if notifications.count == 0 %}
+        <div>No notifications</div>
+        {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}
+{% block customScripts %}
+<script src="{% static 'home/index.js' %}"></script>
+{% endblock customScripts %}
+
+{% comment %} {% with request.get_full_path as querystring %} {% endcomment %}
+{% comment %} <div style="float:right; padding-right: 140px;">
+    <h5>Jo per page:&nbsp;</h5>
+    {% if 'limit' in querystring %}
+    <select id="num_of_rows" onchange="if (this.value) window.location.href=this.value;">
+        {% if '6' in querystring %}
+        <option value="?limit=6" selected>6</option>
+        <option value="?limit=12">12</option>
+        <option value="?limit=18">18</option>
+        {% elif '12' in querystring %}
+        <option value="?limit=6">6</option>
+        <option value="?limit=12" selected>12</option>
+        <option value="?limit=18">18</option>
+        {% else %}
+        <option value="?limit=6">6</option>
+        <option value="?limit=12">12</option>
+        <option value="?limit=18" selected>18</option>
+        {% endif %}
+    </select>
+    {% else %}
+    <select id="num_of_rows" onchange="if (this.value) window.location.href=this.value;">
+        <option value="?limit=6">6</option>
+        <option value="?limit=12" selected>12</option>
+        <option value="?limit=18">18</option>
+    </select>
+    {% endif %}
+</div>
+<br><br><br>
+{% endwith %}
+{% block paginationBlock %}
+{% with request.get_full_path as querystring %}
+{% if projects.has_other_pages %}
+<ul class="pagination">
+    {% if projects.has_previous %}
+    {% if 'Status' in querystring or 'Difficulty' in querystring or 'limit' in querystring%}
+    {% if 'page' in querystring %}
+    <li><a href="{{ querystring|slice:" :-1 " }}{{ projects.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+    <li><a href="{{ querystring }}&page={{ projects.previous_page_number }}">&laquo;</a></li>
+    {% endif %}
+    {% else %}
+    {% if 'page' in querystring %}
+    <li><a href="{{ querystring|slice:" :-1 " }}{{ projects.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+    {% if '?' in querystring %}
+    <li><a href="{{ querystring }}&page={{ projects.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+    <li><a href="{{ querystring }}?page={{ projects.previous_page_number }}">&laquo;</a></li>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% for i in projects.paginator.page_range %}
+    {% if projects.number == i %}
+    <li class="selected">{{ i }}</li>
+    {% else %}
+    {% if 'Status' in querystring or 'Difficulty' in querystring or 'limit' in querystring%}
+    {% if 'page' in querystring %}
+    <li><a href="{{ querystring|slice:" :-1 " }}{{ i }}">{{i}}</a></li>
+    {% else %}
+    <li><a href="{{ querystring }}&page={{ i }}">{{i}}</a></li>
+    {% endif %}
+    {% else %}
+    {% if 'page' in querystring %}
+    <li><a href="{{ querystring|slice:" :-1 " }}{{ i }}">{{i}}</a></li>
+    {% else %}
+    {% if '?' in querystring %}
+    <li><a href="{{ querystring }}&page={{ i }}">{{i}}</a></li>
+    {% else %}
+    <li><a href="{{ querystring }}?page={{ i }}">{{i}}</a></li>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% if projects.has_next %}
+    {% if 'Status' in querystring or 'Difficulty' in querystring or 'limit' in querystring%}
+    {% if 'page' in querystring %}
+    <li><a href="{{ querystring|slice:" :-1 " }}{{ projects.next_page_number }}">&raquo;</a></li>
+    {% else %}
+    <li><a href="{{ querystring }}&page={{ projects.next_page_number }}">&raquo;</a></li>
+    {% endif %}
+    {% else %}
+    {% if 'page' in querystring %}
+    <li><a href="{{ querystring|slice:" :-1 " }}{{ projects.next_page_number }}">&raquo;</a></li>
+    {% else %}
+    {% if '?' in querystring %}
+    <li><a href="{{ querystring }}&page={{ projects.next_page_number }}">&raquo;</a></li>
+    {% else %}
+    <li><a href="{{ querystring }}?page={{ projects.next_page_number }}">&raquo;</a></li>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+</ul>
+{% endif %}
+{% endwith %}
+{% endblock paginationBlock %} {% endcomment %}

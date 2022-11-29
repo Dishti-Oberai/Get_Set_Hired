@@ -1,0 +1,102 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block title %}Profile | Get_Set_Hired{% endblock title %}
+{% block customCSS %}
+<link rel="stylesheet" href="{% static 'home/profile_startup.css' %}">
+{% endblock customCSS %}
+{% comment %} {% block cdnCSS %}{% endblock cdnCSS %} {% endcomment %}
+{% comment %} {% block navbar %}{% endblock navbar %} {% endcomment %}
+{% block content %}
+<div id="profile" class="horizontal-center">
+  <div id="leftColumn">
+    <div id="editButton" class="vertical-center">
+      <div class="horizontal-center">
+        <a style="color: white;" href="/profileEdit/{{user.companyprofile.id}}"><i class="fas fa-pen">Edit</i> </a>
+      </div>
+    </div>
+    <img class="profileImage" src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29tcGFueXxlbnwwfHwwfHw%3D&w=1000&q=80" alt="">
+    <div class="leftColumnCard horizontal-center">
+      <div class="cardTitle">
+        Profile
+      </div>
+      <div class="cardDetails vertical-center">
+        <div>
+          Company Name - {{user.companyprofile.name}}
+          <br>
+          Email - {{user.email}}
+          <br>
+          Contact Number - {{user.companyprofile.contact_num}}
+          Number of Employees - {{user.companyprofile.number_of_employees}}
+          <br>
+        </div>
+      </div>
+    </div>
+    <div class="leftColumnCard horizontal-center">
+      <div class="cardTitle">
+        Links
+      </div>
+      <div class="cardDetails vertical-center">
+        <div>
+          <i class="fab fa-linkedin" style="margin-right: 5px;"></i>LinkedIn :
+          <a href="https://www.linkedin.com/company/get-set-hired/about/" target="_blank">Link</a>
+          <!--          {% if profile_user.profile.linked_in_link|length > 0%}-->
+          <!--          <a href={{profile_user.profile.linked_in_link}} target="_blank">{{profile_user.profile.linked_in_link}}</a>-->
+          <!--          {% else %}-->
+          <!--          NA-->
+          <!--          {% endif %}-->
+          {% comment %} <i class="far fa-file" style="margin-right: 5px;"></i>Website : {% endcomment %}
+          <!--          {% if profile_user.profile.cv|length > 0%}-->
+          <!--          <a href="{{profile_user.profile.cv.url}}" target="_blank">-->
+          <!--            Click Here-->
+          <!--          </a>-->
+          <!--          {% else %}-->
+          <!--          NA-->
+          <!--          {% endif %}-->
+          <br>
+        </div>
+      </div>
+    </div>
+    <div class="leftColumnCard horizontal-center">
+      <div class="cardTitle">
+        Domain
+      </div>
+      <div class="cardDetails vertical-center">
+        <div>
+          {% for jobposting in user.companyprofile.jobpostings.all %}
+            {% for tag in jobposting.domain_tags.all %}
+              {{tag}}
+            {% endfor %}
+            {% for tag in jobposting.requirement_tags.all %}
+              {{tag}}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="rightColumn">
+    <div id="profileProjects">
+      <div id="projectButtons">
+        <div class="projectButton buttonSelected" id='projects0button' onclick="toggleVisibility('projects0')">
+          <div class="projectButtonTitle">
+            Details:
+          </div>
+        </div>
+      </div>
+      <div class="projectsNumbers">
+            <iframe src="{{profile.website_link}}" frameborder="0" width="100%;" height="1000px;">
+            </iframe>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block cdnJS %}{% endblock cdnJS %}
+{% block customJS %}
+<script>
+  function changeLoc(rating, feedbackField){
+    window.location.href = `/rateUser/{{user.id}}/${rating}/${feedbackField}`;
+  }
+</script>
+<script src="{% static 'home/profile.js' %}"></script>
+{% endblock customJS %}

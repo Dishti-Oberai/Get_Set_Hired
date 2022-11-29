@@ -91,26 +91,32 @@ def indexController(req):
 
 def profileController(req, profileId):
     from home.models import UserProfile, CompanyProfile, Feedback
-    import requests
-
-    user = True
     profile = UserProfile.objects.get(id=profileId)
-    if profile.isUser == False:
+    user = profile.isUser
+
+    if user:
+        page = 'home/profile_student.html'
+    else:
         user = False
+        page = 'home/profile_startup.html'
         profile = CompanyProfile.objects.get(id=profileId)
+    context = {"status": True, "user": profile.user, "profile": profile, "page": page}
 
-    linkedInFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "LinkedIn").first()
-    resumeFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Resume").first()
-    courseraCertificatesFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Coursera Certificates").first()
-    profileFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Profile").first()
-    skillsFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Skills").first()
-    context = {"status": True, "user": profile.user, "profile": profile, "linkedInFeedback": linkedInFeedback, "resumeFeedback": resumeFeedback, "courseraCertificatesFeedback": courseraCertificatesFeedback, "profileFeedback": profileFeedback, "skillsFeedback": skillsFeedback}
-    if user == False:
-        context['website'] = requests.get(profile.website_link).text
+    if user:
+        linkedInFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "LinkedIn").first()
+        resumeFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Resume").first()
+        courseraCertificatesFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Coursera Certificates").first()
+        profileFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Profile").first()
+        skillsFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "Skills").first()
 
-    if len(Feedback.objects.all().filter(user__in = [profile.user.id])):
-        from utils import findAverageRating
-        context['averageRating'] = findAverageRating(profile.user.id)
+        context["linkedInFeedback"] = linkedInFeedback
+        context["resumeFeedback"] = resumeFeedback
+        context["courseraCertificatesFeedback"] = courseraCertificatesFeedback
+        context["profileFeedback"] = profileFeedback
+        context["skillsFeedback"] = skillsFeedback
+        if len(Feedback.objects.all().filter(user__in = [profile.user.id])):
+            from utils import findAverageRating
+            context['averageRating'] = findAverageRating(profile.user.id)
     return context
 
 

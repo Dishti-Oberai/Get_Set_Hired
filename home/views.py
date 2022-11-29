@@ -52,7 +52,7 @@ def index(req):
 @can_check_profile
 def profile(req, profileId):
     context = profileController(req, profileId)
-    return render(req, 'home/profile.html', context)
+    return render(req, context['page'], context)
 
 @login_required
 @is_user_profile

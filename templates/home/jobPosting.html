@@ -170,23 +170,22 @@
         <h1 style="color:black;">-----------------------------------SHORTLISTED CANDIDATES-----------------------------------</h1>
       </hgroup>
 
-<form method="POST">
+<form method="POST" style="display: flex; flex-direction: row; height:35px; margin-left:30%;">
   {% csrf_token %}
   Skills-:
-  <select name="skills" id="skills" multiple>
+  <select name="skills" id="skills" multiple style="width:100px; margin-left: 10px;">
     <option value="">---</option>
     {% for skill in jobPosting.requirement_skills.all %}
       <option value="{{skill.id}}">{{skill}}</option>
     {% endfor %}
-  </select>
-  <br>
+  </select >
   Filter By-:
-  <select name="filterBy" id="filterBy">
+  <select name="filterBy" id="filterBy" style="width:100px; margin-left: 10px;">
     <option value="or">or</option>
     <option value="and">and</option>
   </select>
-  <input type="submit" value="Submit">
-  <input type="submit" value="Clear filters">
+  <input type="submit" value="Submit" style="width:100px; margin-left: 10px; background-color: steelblue; color: white; border: white;">
+  <input type="submit" value="Clear filters" style="width:100px; margin-left: 10px; background-color: steelblue; color: white; border: white;">
 </form>
 
 <div class="wrapper">
@@ -231,7 +230,7 @@
 </div>
 
 <hgroup>
-        <h1 style="color:black;">-----------------------------------ELIGIBLE CANDIDATES-----------------------------------</h1>
+        <h1 style="color:black;">-------------------------------------------ELIGIBLE CANDIDATES-----------------------------------</h1>
       </hgroup>
 
 

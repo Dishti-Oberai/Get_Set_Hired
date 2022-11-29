@@ -170,24 +170,6 @@
         <h1 style="color:black;">-----------------------------------SHORTLISTED CANDIDATES-----------------------------------</h1>
       </hgroup>
 
-<form method="POST" style="display: flex; flex-direction: row; height:35px; margin-left:30%;">
-  {% csrf_token %}
-  Skills-:
-  <select name="skills" id="skills" multiple style="width:100px; margin-left: 10px;">
-    <option value="">---</option>
-    {% for skill in jobPosting.requirement_skills.all %}
-      <option value="{{skill.id}}">{{skill}}</option>
-    {% endfor %}
-  </select >
-  Filter By-:
-  <select name="filterBy" id="filterBy" style="width:100px; margin-left: 10px;">
-    <option value="or">or</option>
-    <option value="and">and</option>
-  </select>
-  <input type="submit" value="Submit" style="width:100px; margin-left: 10px; background-color: steelblue; color: white; border: white;">
-  <input type="submit" value="Clear filters" style="width:100px; margin-left: 10px; background-color: steelblue; color: white; border: white;">
-</form>
-
 <div class="wrapper">
 
   <div class="table">
@@ -203,7 +185,7 @@
         Status
       </div>
       <div class="cell">
-        Change Status
+        Change status to
       </div>
     </div>
 
@@ -233,7 +215,23 @@
         <h1 style="color:black;">-------------------------------------------ELIGIBLE CANDIDATES-----------------------------------</h1>
       </hgroup>
 
-
+      <form method="POST" style="display: flex; flex-direction: row; height:35px; margin-left:30%;">
+        {% csrf_token %}
+        Skills-:
+        <select name="skills" id="skills" multiple style="width:100px; margin-left: 10px;">
+          <option value="">---</option>
+          {% for skill in jobPosting.requirement_skills.all %}
+            <option value="{{skill.id}}">{{skill}}</option>
+          {% endfor %}
+        </select >
+        Filter By-:
+        <select name="filterBy" id="filterBy" style="width:100px; margin-left: 10px;">
+          <option value="or">or</option>
+          <option value="and">and</option>
+        </select>
+        <input type="submit" value="Submit" style="width:100px; margin-left: 10px; background-color: steelblue; color: white; border: white;">
+        <input type="submit" value="Clear filters" style="width:100px; margin-left: 10px; background-color: steelblue; color: white; border: white;">
+      </form>
 <div class="wrapper">
 
   <div class="table">
@@ -249,7 +247,7 @@
         Status
       </div>
       <div class="cell">
-        Change Status
+        Change status to
       </div>
     </div>
 
@@ -258,8 +256,8 @@
     <div class="row">
       <div class="cell"><a href="/profile/{{user.0.id}}">{{user.0}}</a></div>
       <div class="cell">{{user.1}}</div>
-      <div class="cell">Accepted</div>
-      <div class="cell"><a href="/reject/{{user.0.id}}/{{jobPosting.id}}">Reject</a></div>
+      <div class="cell">Waiting</div>
+      <div class="cell"><a href="/accept/{{user.0.id}}/{{jobPosting.id}}">Accept</a></div>
     </div>
     {% endfor %}
     {% if rem_users|length == 0 %}

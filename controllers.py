@@ -186,12 +186,10 @@ def jobPostingController(req, jobPostingId):
         filterBy = variables.get('filterBy')
 
         filtered_rem_users = []
-        print(filterskills)
         for user in rem_users:
             user_skills = list(user[0].skills.all())
             user_skills = [skill.id for skill in user_skills]
             if filterBy == 'or':
-                print(user_skills)
                 if any(item in user_skills for item in filterskills):
                     filtered_rem_users.append(user)
             else:

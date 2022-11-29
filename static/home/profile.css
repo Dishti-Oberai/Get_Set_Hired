@@ -10,6 +10,7 @@ body {
 #content{
   background-color: #008cff !important;
 }
+
 .wrapper {
   padding: 1rem;
   background: #FFFFFF;
@@ -142,4 +143,16 @@ ul li {
 
 a {
   color: #2b98f0;
+}
+
+#content > div > div > section.left-section > div.job > h3{
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#content > div > div > section.left-section > div.job > p{
+  font-size: 18px;
+}
+#CopyrightAndTeam{
+  padding-top: 15px;
 }

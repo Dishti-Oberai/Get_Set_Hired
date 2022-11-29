@@ -8,106 +8,490 @@
 <link rel="stylesheet" type="text/css" href="{% static 'home/jobPosting.css' %}">
 {% endblock customCSS %}
 {% block content %}
+<!-- Hero Unit -->
+<section class="hero-unit">
+
+  <div class="row">
+    <div class="large-12 columns">
+      <hgroup>
+        <h1>Code. Design. Education.</h1>
+        <h3>Just keep learning. Make new opportunities.</h3>
+      </hgroup>
+
+
+      <ul class="small-block-grid-2 medium-block-grid-3 flip-cards">
+
+        <li ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <a href="#">Code</a>
+            <i class="fa fa-code card-icon "></i>
+          </div>
+          <div class="panel card-back">
+            <i class="fa fa-code card-icon"></i>
+            <div class="hub-info">
+              <a href="#">JKLCode.com</a>
+              <p>Find coding gists, cheatsheets, plugins, themes, resources, and tutorials.</p>
+            </div>
+            <small class="clear">Updated TTH.</small>
+          </div>
+        </li>
+
+        <li ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <a href="http://www.aaronsnowberger.com">Design</a>
+            <i class="fa fa-pencil-square-o card-icon"></i>
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-pencil-square-o card-icon"></i>
+            <div class="hub-info">
+              <a href="http://www.aaronsnowberger.com">AaronSnowberger.com</a>
+              <p>Take a look at my graphic design portfolio and contact me for design work.</p>
+            </div>
+            <small class="clear">Updated Saturdays.</small>
+          </div>
+        </li>
+
+        <li ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <a href="">Education</a>
+            <i class="fa fa-paper-plane-o card-icon"></i>
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-paper-plane-o card-icon"></i>
+            <div class="hub-info">
+              <a href="">Udemy.com</a>
+              <p>Join classes about Computers, Technology, Coding, Design, and Language Learning.</p>
+            </div>
+            <small class="clear">Updated Mondays.</small>
+          </div>
+        </li>
+
+        <li ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <a href="">Life</a>
+            <i class="fa fa-map-o card-icon"></i>
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-map-o card-icon"></i>
+            <div class="hub-info">
+              <a href="">KeysToAGoodLife.com</a>
+              <p>Find resources about business, family, exercise, and other various topics.</p>
+            </div>
+            <small class="clear">Updated monthly.</small>
+          </div>
+        </li>
+
+        <li ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <a href="http://www.keytokorean.com">Language</a>
+            <i class="fa fa-language card-icon"></i>
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-language card-icon"></i>
+            <div class="hub-info">
+              <a href="http://www.keytokorean.com">KeyToKorean.com</a>
+              <p>Take your Korean from "foreign" to fluent with vocab lists and grammar guides.</p>
+            </div>
+            <small class="clear">Updated MWF.</small>
+          </div>
+        </li>
+
+        <li ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <a href="http://www.aicfchurch.org">Church</a>
+            <i class="fa fa-users card-icon"></i>
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-users card-icon"></i>
+            <div class="hub-info">
+              <a href="http://www.aicfchurch.org">AICFChurch.org</a>
+              <p>Listen to sermon podcasts or download church graphic design resources.</p>
+            </div>
+            <small class="clear">Updated the 4th Sunday.</small>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="large-12 columns">
+      <div class="small-12 small-centered medium-6 medium-centered large-3 large-centered columns clients">
+        <a href="#">
+          <h6 class="text-center">Clients Click Here</h6>
+          <p class="text-center">
+            <span class="fa-stack">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-angle-right fa-inverse fa-stack-1x"></i>
+					</span>
+          </p>
+        </a>
+      </div>
+      <!-- end .clients -->
+    </div>
+
+  </div>
+</section>
+<!--<br>-->
+<!--<h2 style="color:#19258c; font-size: 35px; margin-left:42%;"><u>Job Requirements</u></h2>-->
+<!--<br>-->
+<!--<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Title: </span>{{jobPosting.title}} </p>-->
+<!--<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Position: </span>{{jobPosting.position}} </p>-->
+<!--<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Job Description: </span><a href='/media/{{jobposting.job_description}}'>{{jobPosting.job_description}}</a> </p>-->
+<!--<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >No of seats: </span>{{jobPosting.no_of_seats}}</p>-->
+<!--<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Stipend: </span>{{jobPosting.stipend}}</p>-->
+<!--<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Location: </span>{{jobPosting.location}}</p>-->
+<!--<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Technologies used: </span></p>-->
+<!--{% for skills in jobPosting.domain_skills.all %}-->
+<!--<li style="font-size: 25px; margin-left:20%;">{{skills}}<br></li>-->
+<!--{% endfor %}<br>-->
+<!--<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Requirements: </span></p>-->
+<!--{% for skills in jobPosting.requirement_skills.all %}-->
+<!--  <li style="font-size: 25px; margin-left:20%;">{{skills}}<br></li>-->
+<!--{% endfor %}<br>-->
+<!--<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Status: </span>{{jobPosting.status}}</p>-->
+<!--<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Experience Required: </span>{{jobPosting.experience_required}}</p>-->
+<!--<br>-->
+
+<div class="wrapper">
+
+  <div class="table">
+
+    <div class="row header">
+      <div class="cell">
+        Name
+      </div>
+      <div class="cell">
+        Age
+      </div>
+      <div class="cell">
+        Occupation
+      </div>
+      <div class="cell">
+        Location
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cell" data-title="Name">
+        Luke Peters
+      </div>
+      <div class="cell" data-title="Age">
+        25
+      </div>
+      <div class="cell" data-title="Occupation">
+        Freelance Web Developer
+      </div>
+      <div class="cell" data-title="Location">
+        Brookline, MA
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cell" data-title="Name">
+        Joseph Smith
+      </div>
+      <div class="cell" data-title="Age">
+        27
+      </div>
+      <div class="cell" data-title="Occupation">
+        Project Manager
+      </div>
+      <div class="cell" data-title="Location">
+        Somerville, MA
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cell" data-title="Name">
+        Maxwell Johnson
+      </div>
+      <div class="cell" data-title="Age">
+        26
+      </div>
+      <div class="cell" data-title="Occupation">
+        UX Architect & Designer
+      </div>
+      <div class="cell" data-title="Location">
+        Arlington, MA
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cell" data-title="Name">
+        Harry Harrison
+      </div>
+      <div class="cell" data-title="Age">
+        25
+      </div>
+      <div class="cell" data-title="Occupation">
+        Front-End Developer
+      </div>
+      <div class="cell" data-title="Location">
+        Boston, MA
+      </div>
+    </div>
+
+  </div>
+
+  <div class="table">
+
+    <div class="row header green">
+      <div class="cell">
+        Product
+      </div>
+      <div class="cell">
+        Unit Price
+      </div>
+      <div class="cell">
+        Quantity
+      </div>
+      <div class="cell">
+        Date Sold
+      </div>
+      <div class="cell">
+        Status
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cell" data-title="Product">
+        Solid oak work table
+      </div>
+      <div class="cell" data-title="Unit Price">
+        $800
+      </div>
+      <div class="cell" data-title="Quantity">
+        10
+      </div>
+      <div class="cell" data-title="Date Sold">
+        03/15/2014
+      </div>
+      <div class="cell" data-title="Status">
+        Waiting for Pickup
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cell" data-title="Product">
+        Leather iPhone wallet
+      </div>
+      <div class="cell" data-title="Unit Price">
+        $45
+      </div>
+      <div class="cell" data-title="Quantity">
+        120
+      </div>
+      <div class="cell" data-title="Date Sold">
+        02/28/2014
+      </div>
+      <div class="cell" data-title="Status">
+        In Transit
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cell" data-title="Product">
+        27" Apple Thunderbolt displays
+      </div>
+      <div class="cell" data-title="Unit Price">
+        $1000
+      </div>
+      <div class="cell" data-title="Quantity">
+        25
+      </div>
+      <div class="cell" data-title="Date Sold">
+        02/10/2014
+      </div>
+      <div class="cell" data-title="Status">
+        Delivered
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cell" data-title="Product">
+        Bose studio headphones
+      </div>
+      <div class="cell" data-title="Unit Price">
+        $60
+      </div>
+      <div class="cell" data-title="Quantity">
+        90
+      </div>
+      <div class="cell" data-title="Date Sold">
+        01/14/2014
+      </div>
+      <div class="cell" data-title="Status">
+        Delivered
+      </div>
+    </div>
+
+  </div>
+
+  <div class="table">
+
+    <div class="row header blue">
+      <div class="cell">
+        Username
+      </div>
+      <div class="cell">
+        Email
+      </div>
+      <div class="cell">
+        Password
+      </div>
+      <div class="cell">
+        Active
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cell" data-title="Username">
+        ninjalug
+      </div>
+      <div class="cell" data-title="Email">
+        misterninja@hotmail.com
+      </div>
+      <div class="cell" data-title="Password">
+        ************
+      </div>
+      <div class="cell" data-title="Active">
+        Yes
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cell" data-title="Username">
+        jsmith41
+      </div>
+      <div class="cell" data-title="Email">
+        joseph.smith@gmail.com
+      </div>
+      <div class="cell" data-title="Password">
+        ************
+      </div>
+      <div class="cell" data-title="Active">
+        No
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cell" data-title="Username">
+        1337hax0r15
+      </div>
+      <div class="cell" data-title="Email">
+        hackerdude1000@aol.com
+      </div>
+      <div class="cell" data-title="Password">
+        ************
+      </div>
+      <div class="cell" data-title="Active">
+        Yes
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cell" data-title="Username">
+        hairyharry19
+      </div>
+      <div class="cell" data-title="Email">
+        harryharry@gmail.com
+      </div>
+      <div class="cell" data-title="Password">
+        ************
+      </div>
+      <div class="cell" data-title="Active">
+        Yes
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<!--<h2 style="color:#19258c; font-size: 35px; margin-left:42%;"><u>Shortlisted Students</u></h2>-->
+<!--<table id="table" data-toggle="table" data-search = "false" data-filter-control="true" data-toolbar="#toolbar1">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th data-field="name" data-sortable="true">Name</th>-->
+<!--      <th data-field="rating" data-sortable="true">Rating</th>-->
+<!--      <th data-field="status" data-sortable="false">Status</th>-->
+<!--      <th data-field="reject" data-sortable="false"  data-filter-control="select">Change Status</th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--    {% for user in willing_to_hire_users %}-->
+<!--    <tr>-->
+<!--      <td><a href="/profile/{{user.0.id}}">{{user.0}}</a></td>-->
+<!--      <td>{{user.1}}</td>-->
+<!--      <td>Accepted</td>-->
+<!--      <td><a href="/reject/{{user.0.id}}/{{jobPosting.id}}">Reject</a></td>-->
+<!--    </tr>-->
+<!--    {% endfor %}-->
+<!--    {% if willing_to_hire_users|length == 0 %}-->
+<!--    <tr>-->
+<!--      <td colspan='4'>-->
+<!--        No requests-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    {% endif %}-->
+<!--  </tbody>-->
+<!--</table>-->
 <br>
-<h2 style="color:#19258c; font-size: 35px; margin-left:42%;"><u>Job Requirements</u></h2>
+<!--<form method="POST">-->
+<!--  {% csrf_token %}-->
+<!--  Skills-:-->
+<!--  <select name="skills" id="skills" multiple>-->
+<!--    <option value="">-&#45;&#45;</option>-->
+<!--    {% for skill in jobPosting.requirement_skills.all %}-->
+<!--      <option value="{{skill.id}}">{{skill}}</option>-->
+<!--    {% endfor %}-->
+<!--  </select>-->
+<!--  <br>-->
+<!--  Filter By-:-->
+<!--  <select name="filterBy" id="filterBy">-->
+<!--    <option value="or">or</option>-->
+<!--    <option value="and">and</option>-->
+<!--  </select>-->
+<!--  <input type="submit" value="Submit">-->
+<!--  <input type="submit" value="Clear filters">-->
+<!--</form>-->
 <br>
-<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Title: </span>{{jobPosting.title}} </p>
-<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Position: </span>{{jobPosting.position}} </p>
-<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Job Description: </span><a href='/media/{{jobposting.job_description}}'>{{jobPosting.job_description}}</a> </p>
-<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >No of seats: </span>{{jobPosting.no_of_seats}}</p>
-<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Stipend: </span>{{jobPosting.stipend}}</p>
-<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Location: </span>{{jobPosting.location}}</p>
-<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Technologies used: </span></p>
-{% for skills in jobPosting.domain_skills.all %}
-<li style="font-size: 25px; margin-left:20%;">{{skills}}<br></li>
-{% endfor %}<br>
-<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Requirements: </span></p>
-{% for skills in jobPosting.requirement_skills.all %}
-  <li style="font-size: 25px; margin-left:20%;">{{skills}}<br></li>
-{% endfor %}<br>
-<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Status: </span>{{jobPosting.status}}</p>
-<p style="font-size: 25px; margin-left:15%;"><span style="color:#19258c;" >Experience Required: </span>{{jobPosting.experience_required}}</p>
-<br>
-<h2 style="color:#19258c; font-size: 35px; margin-left:42%;"><u>Shortlisted Students</u></h2>
-<table id="table" data-toggle="table" data-search = "false" data-filter-control="true" data-toolbar="#toolbar1">
-  <thead>
-    <tr>
-      <th data-field="name" data-sortable="true">Name</th>
-      <th data-field="rating" data-sortable="true">Rating</th>
-      <th data-field="status" data-sortable="false">Status</th>
-      <th data-field="reject" data-sortable="false"  data-filter-control="select">Change Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for user in willing_to_hire_users %}
-    <tr>
-      <td><a href="/profile/{{user.0.id}}">{{user.0}}</a></td>
-      <td>{{user.1}}</td>
-      <td>Accepted</td>
-      <td><a href="/reject/{{user.0.id}}/{{jobPosting.id}}">Reject</a></td>
-    </tr>
-    {% endfor %}
-    {% if willing_to_hire_users|length == 0 %}
-    <tr>
-      <td colspan='4'>
-        No requests
-      </td>
-    </tr>
-    {% endif %}
-  </tbody>
-</table>
-<br>
-<form method="POST">
-  {% csrf_token %}
-  Skills-:
-  <select name="skills" id="skills" multiple>
-    <option value="">---</option>
-    {% for skill in jobPosting.requirement_skills.all %}
-      <option value="{{skill.id}}">{{skill}}</option>
-    {% endfor %}
-  </select>
-  <br>
-  Filter By-:
-  <select name="filterBy" id="filterBy">
-    <option value="or">or</option>
-    <option value="and">and</option>
-  </select>
-  <input type="submit" value="Submit">
-  <input type="submit" value="Clear filters">
-</form>
-<br>
-<h2 style="color:#19258c; font-size: 35px; margin-left:42%;"><u>Eligible Students</u></h2>
-<table id="table" data-toggle="table" data-search="false" data-filter-control="true" data-toolbar="#toolbar2">
-  <thead>
-    <tr>
-      <th data-field="name" data-sortable="true" >Name</th>
-      <th data-field="rating" data-sortable="true">Rating</th>
-      <th data-field="skills" data-sortable="true">Skills</th>
-      <th data-field="accept" data-sortable="false" data-filter-control="select">Change Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for user in rem_users %}
-    <tr>
-      <td><a href="/profile/{{user.0.id}}">{{user.0}}</a></td>
-      <td>{{user.1}}</td>
-      <td>
-        {% for skill in user.0.skills.all %}
-          {{skill}}
-        {% endfor %}
-      </td>
-      <td><a href="/accept/{{user.0.id}}/{{jobPosting.id}}">Accept</a></td>
-    </tr>
-    {% endfor %}
-    {% if rem_users|length == 0 %}
-    <tr>
-      <td colspan='4'>
-        No requests
-      </td>
-    </tr>
-    {% endif %}
-  </tbody>
-</table>
+<!--<h2 style="color:#19258c; font-size: 35px; margin-left:42%;"><u>Eligible Students</u></h2>-->
+<!--<table id="table" data-toggle="table" data-search="false" data-filter-control="true" data-toolbar="#toolbar2">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th data-field="name" data-sortable="true" >Name</th>-->
+<!--      <th data-field="rating" data-sortable="true">Rating</th>-->
+<!--      <th data-field="skills" data-sortable="true">Skills</th>-->
+<!--      <th data-field="accept" data-sortable="false" data-filter-control="select">Change Status</th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--    {% for user in rem_users %}-->
+<!--    <tr>-->
+<!--      <td><a href="/profile/{{user.0.id}}">{{user.0}}</a></td>-->
+<!--      <td>{{user.1}}</td>-->
+<!--      <td>-->
+<!--        {% for skill in user.0.skills.all %}-->
+<!--          {{skill}}-->
+<!--        {% endfor %}-->
+<!--      </td>-->
+<!--      <td><a href="/accept/{{user.0.id}}/{{jobPosting.id}}">Accept</a></td>-->
+<!--    </tr>-->
+<!--    {% endfor %}-->
+<!--    {% if rem_users|length == 0 %}-->
+<!--    <tr>-->
+<!--      <td colspan='4'>-->
+<!--        No requests-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    {% endif %}-->
+<!--  </tbody>-->
+<!--</table>-->
 {% endblock content %}
 {% block customJS %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>

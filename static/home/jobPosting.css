@@ -220,12 +220,44 @@ a:hover {
 }
 
 /* Sixth (last) button color */
-.flip-cards li:last-child > .button {
+.flip-cards li:nth-child(6) > .button {
   background-color: rgba(100, 66, 87, 0.8);
 }
-.flip-cards li:last-child > .panel {
+.flip-cards li:nth-child(6) > .panel {
   background-color: rgba(100, 66, 87, 1);
   color: white;
+}
+
+/* Seven (last) button color */
+.flip-cards li:nth-child(7) > .button {
+  background-color: rgba(40, 57, 77, 0.8);
+}
+.flip-cards li:nth-child(7) > .panel {
+  background-color: rgba(40, 57, 77, 1);
+}
+
+/* Eight button color */
+.flip-cards li:nth-child(8) > .button {
+  background-color: rgba(109, 193, 202, 0.8);
+}
+.flip-cards li:nth-child(8) > .panel {
+  background-color: rgba(109, 193, 202, 1);
+}
+
+/* Ninth button color */
+.flip-cards li:nth-child(9) > .button {
+  background-color: rgba(211, 81, 45, 0.8);
+}
+.flip-cards li:nth-child(9) > .panel {
+  background-color: rgba(211, 81, 45, 1);
+}
+
+/* Tenth button color */
+.flip-cards li:nth-child(10) > .button {
+  background-color: rgba(100, 66, 87, 0.8);
+}
+.flip-cards li:nth-child(10) > .panel {
+  background-color: rgba(100, 66, 87, 1);
 }
 
 /*

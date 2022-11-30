@@ -339,6 +339,7 @@
     </div>
     <div class="job">
       <h1 class="title">Certificates
+        {% if userCanRate %}
         <select onclick="if (typeof(this.selectedIndex) != 'undefined') changeLoc(this.selectedIndex, 'Coursera Certificates')">
           <option value="">---</option>
           {% if courseraCertificatesFeedback.rating == 1%}
@@ -367,6 +368,7 @@
           <option value="5">5</option>
           {% endif %}
         </select>
+        {% endif %}
       </h1>
       
       <h3>Coursera:</h3>
@@ -385,6 +387,7 @@
       <h1 class="user-name">{{user.first_name}} {{user.last_name}}</h1>
       <h3 class="current-job">Average Rating: {{averageRating}}</h3>
       <p class="info">Looking for experience</p>
+      {% if userCanRate %}
       <select onclick="if (typeof(this.selectedIndex) != 'undefined') changeLoc(this.selectedIndex, 'Profile')">
         <option value="">---</option>
         {% if profileFeedback.rating == 1%}
@@ -413,6 +416,7 @@
         <option value="5">5</option>
         {% endif %}
       </select>
+      {% endif %}
       
       <h1 class="title about">About me</h1>
       <h3>Contact</h3>
@@ -425,6 +429,7 @@
     </div>
     <div class="skills">
       <h1 class="title">Skills
+        {% if userCanRate %}
         <select onclick="if (typeof(this.selectedIndex) != 'undefined') changeLoc(this.selectedIndex, 'Skills')">
           <option value="">---</option>
           {% if skillsFeedback.rating == 1%}
@@ -453,6 +458,7 @@
           <option value="5">5</option>
           {% endif %}
         </select>
+        {% endif %}
       </h1>
       <ul>
         {% for skill in profile.skills.all %}

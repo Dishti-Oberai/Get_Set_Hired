@@ -217,3 +217,9 @@ function spin(currentFrameTime) {
         }
     }
 })();
+
+backgrounds = ['linear-gradient(135deg, #CE9FFC 0%,#7367F0 100%)', 'linear-gradient(135deg, #f02fc2cc 0%,#6094eacc 100%)','linear-gradient(135deg, #0FF0B388 0%,#036ED988 100%)','linear-gradient(135deg, #fcdf8a 0%,#f38381 100%)', 'linear-gradient(135deg, #fad961aa 0%,#f76b1caa 100%)', 'linear-gradient(135deg, #c3ec52aa 0%,#0ba29daa 100%)', 'linear-gradient(135deg, #1359f0aa 0%,#d91168aa 100%)'];
+cards = document.getElementsByClassName('card1');
+for(var i = 0;i<cards.length;i++){
+    cards[i].style.background = backgrounds[i%backgrounds.length];
+}

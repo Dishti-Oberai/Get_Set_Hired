@@ -1,14 +1,22 @@
 from django.contrib import messages
 
 def shellController():
-    from home.models import skill, Skill
-    count = len(skill.objects.all())
-    skill = skill(title = 'skill' + str(count+1))
-    skill.save()
+    pass
+    # from django.contrib.auth.models import User
+    # from home.models import CompanyProfile
+    # user = User.objects.all().filter(username = "dishti").first()
+    # profile = CompanyProfile.objects.get(user = user)
+    # profile.isCompany = True
+    # profile.save()
 
-    count = len(Skill.objects.all())
-    skill = Skill(title = 'skill' + str(count+1))
-    skill.save()
+    # from home.models import skill, Skill
+    # count = len(skill.objects.all())
+    # skill = skill(title = 'skill' + str(count+1))
+    # skill.save()
+
+    # count = len(Skill.objects.all())
+    # skill = Skill(title = 'skill' + str(count+1))
+    # skill.save()
 
 def loginController(req):
     from django.contrib.auth import authenticate, login
@@ -93,14 +101,13 @@ def profileController(req, profileId):
     from home.models import UserProfile, CompanyProfile, Feedback
     profile = UserProfile.objects.get(id=profileId)
     user = profile.isUser
-
+    userCanRate = req.user.companyprofile.isCompany
     if user:
         page = 'home/profile_student.html'
     else:
-        user = False
-        page = 'home/profile_startup.html'
         profile = CompanyProfile.objects.get(id=profileId)
-    context = {"status": True, "user": profile.user, "profile": profile, "page": page}
+        page = 'home/profile_startup.html'
+    context = {"status": True, "user": profile.user, "profile": profile, "page": page, "userCanRate": userCanRate}
 
     if user:
         linkedInFeedback = Feedback.objects.all().filter(user__in = [profile.user.id]).filter(company__in = [req.user], ratingfield = "LinkedIn").first()

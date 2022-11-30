@@ -98,6 +98,7 @@ def indexController(req):
 
 
 def profileController(req, profileId):
+    import requests
     from home.models import UserProfile, CompanyProfile, Feedback
     profile = UserProfile.objects.get(id=profileId)
     user = profile.isUser
@@ -124,6 +125,8 @@ def profileController(req, profileId):
         if len(Feedback.objects.all().filter(user__in = [profile.user.id])):
             from utils import findAverageRating
             context['averageRating'] = findAverageRating(profile.user.id)
+    else:
+        context['website'] = requests.get(profile.website_link).text
     return context
 
 
